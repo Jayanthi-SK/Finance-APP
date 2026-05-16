@@ -1,0 +1,19 @@
+cat > vercel.json << 'EOF'
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
+EOF
+
+git add vercel.json
+git commit -m "Add caching headers"
+git push origin main
